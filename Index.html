@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Validación de Documento</title>
+  <meta name="description" content="Verifica si un documento es original mediante código QR." />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">✓</div>
+        <div>
+          <div class="brand-title">Validador de Documento</div>
+          <div class="brand-sub">Verificación de autenticidad vía QR</div>
+        </div>
+      </div>
+      <a class="help" href="#como-funciona">¿Cómo funciona?</a>
+    </header>
+
+    <section class="card hero" aria-live="polite">
+      <div class="badge" id="statusBadge">Listo para validar</div>
+
+      <h1 class="title" id="statusTitle">Escanea el QR para validar</h1>
+      <p class="subtitle" id="statusSubtitle">
+        Si llegaste aquí desde un código QR, la verificación se ejecutará automáticamente.
+      </p>
+
+      <div class="divider"></div>
+
+      <div class="grid">
+        <div class="panel">
+          <label class="label" for="codeInput">Código de verificación</label>
+          <div class="inputRow">
+            <input id="codeInput" class="input" placeholder="Ej: ABC123" autocomplete="off" />
+            <button id="validateBtn" class="btn">Validar</button>
+          </div>
+          <div class="hint">
+            Tip: el QR debería abrir una URL como <span class="mono">...?code=ABC123</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="resultBox" id="resultBox">
+            <div class="resultIcon" id="resultIcon" aria-hidden="true">●</div>
+            <div class="resultText">
+              <div class="resultTop" id="resultTop">Estado</div>
+              <div class="resultBottom mono" id="resultBottom">Sin validar</div>
+            </div>
+          </div>
+
+          <div class="meta" id="metaArea">
+            <div class="metaRow">
+              <div class="metaKey">Código</div>
+              <div class="metaVal mono" id="metaCode">—</div>
+            </div>
+            <div class="metaRow">
+              <div class="metaKey">Documento</div>
+              <div class="metaVal" id="metaDoc">—</div>
+            </div>
+            <div class="metaRow">
+              <div class="metaKey">Emisor</div>
+              <div class="metaVal" id="metaIssuer">—</div>
+            </div>
+            <div class="metaRow">
+              <div class="metaKey">Fecha</div>
+              <div class="metaVal" id="metaDate">—</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="footnote" id="disclaimer">
+        Este sitio muestra el resultado de una validación. Para máxima seguridad, valida en un servidor.
+      </p>
+    </section>
+
+    <section class="card info" id="como-funciona">
+      <h2>Cómo funciona</h2>
+      <ol>
+        <li>El QR dirige a esta página con un parámetro <span class="mono">code</span>.</li>
+        <li>La página consulta un servicio de verificación (o usa una demo local).</li>
+        <li>Si el código es válido, muestra “Documento original” y los metadatos.</li>
+      </ol>
+      <p class="small">
+        Si quieres, puedo adaptarlo para tu flujo: por ejemplo, validar también el <span class="mono">ID de documento</span>,
+        mostrar un PDF, o integrar firma digital.
+      </p>
+    </section>
+
+    <footer class="footer">
+      <span class="small">© <span id="year"></span> · Verificación de autenticidad</span>
+    </footer>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
